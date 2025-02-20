@@ -34,6 +34,23 @@ return [
     */
 
     'guard' => ['web'],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Sanctum Routes
+    |--------------------------------------------------------------------------
+    |
+    | Customize the routes Sanctum provides for SPA authentication. You can
+    | enable or disable Sanctum routes, set a custom route prefix, and adjust
+    | the CSRF cookie route as needed for your application’s routing structure.
+    |
+    */
+    
+    'routes' => [
+        'enabled' => env('SANCTUM_ROUTES', true),
+        'prefix' => 'sanctum',
+        'csrf-cookie' => '/csrf-cookie',
+    ]
 
     /*
     |--------------------------------------------------------------------------
