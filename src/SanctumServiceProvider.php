@@ -73,7 +73,7 @@ class SanctumServiceProvider extends ServiceProvider
             Route::get(
                 config('sanctum.route.csrf-cookie', '/csrf-cookie'),
                 CsrfCookieController::class.'@show'
-            )->middleware(config('sanctum.middleware', 'web'))->name('sanctum.csrf-cookie');
+            )->middleware('web')->name('sanctum.csrf-cookie');
         });
     }
 
