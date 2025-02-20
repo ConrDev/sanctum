@@ -69,11 +69,11 @@ class SanctumServiceProvider extends ServiceProvider
             return;
         }
 
-        Route::group(['prefix' => config('sanctum.prefix', 'sanctum')], function () {
+        Route::group(['prefix' => config('sanctum.route.prefix', 'sanctum')], function () {
             Route::get(
-                '/csrf-cookie',
+                config('sanctum.route.csrf-cookie', '/csrf-cookie'),
                 CsrfCookieController::class.'@show'
-            )->middleware('web')->name('sanctum.csrf-cookie');
+            )->middleware(config('sanctum.middleware', 'web'))->name('sanctum.csrf-cookie');
         });
     }
 
