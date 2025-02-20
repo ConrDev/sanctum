@@ -65,13 +65,13 @@ class SanctumServiceProvider extends ServiceProvider
      */
     protected function defineRoutes()
     {
-        if (app()->routesAreCached() || config('sanctum.routes') === false) {
+        if (app()->routesAreCached() || config('sanctum.routes.enabled') === false) {
             return;
         }
 
-        Route::group(['prefix' => config('sanctum.route.prefix', 'sanctum')], function () {
+        Route::group(['prefix' => config('sanctum.routes.prefix', 'sanctum')], function () {
             Route::get(
-                config('sanctum.route.csrf-cookie', '/csrf-cookie'),
+                config('sanctum.routes.csrf-cookie', '/csrf-cookie'),
                 [CsrfCookieController::class, 'show']
             )->middleware('web')->name('sanctum.csrf-cookie');
         });
